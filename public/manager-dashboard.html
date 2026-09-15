@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RosterUp — Manager Dashboard</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="/style/main.css">
+  <link rel="stylesheet" href="/style/manager-dashboard.css">
+</head>
+<body>
+
+  <div class="mgr-shell">
+    <aside class="mgr-sidebar">
+      <div class="mgr-sidebar-header">
+        <div class="auth-logo">
+          <div class="auth-logo-box" style="width:32px;height:32px;font-size:0.875rem;">R</div>
+          <span class="auth-logo-text" style="font-size:1rem;">RosterUp</span>
+        </div>
+        <div class="mgr-sidebar-role">
+          <span class="material-icons">security</span>
+          <span>Manager</span>
+        </div>
+      </div>
+
+      <nav class="mgr-nav">
+        <a href="manager-dashboard.html" class="mgr-nav-item mgr-nav-item--active">
+          <span class="material-icons">dashboard</span> Dashboard
+        </a>
+        <a href="manager-approvals.html" class="mgr-nav-item">
+          <span class="material-icons">group</span> Employees
+        </a>
+        <a href="manager-shift-approvals.html" class="mgr-nav-item">
+          <span class="material-icons">assignment</span> Shift Approvals
+        </a>
+        <span class="mgr-nav-item mgr-nav-item--disabled" title="Not built yet">
+          <span class="material-icons">calendar_today</span> All Shifts
+        </span>
+        <span class="mgr-nav-item mgr-nav-item--disabled" title="Not built yet">
+          <span class="material-icons">history</span> Shift History
+        </span>
+        <span class="mgr-nav-item mgr-nav-item--disabled" title="Not built yet">
+          <span class="material-icons">settings</span> Business Settings
+        </span>
+        <a href="manager-chat.html" class="mgr-nav-item">
+          <span class="material-icons">forum</span> Team Chat
+        </a>
+        <a href="manager-profile.html" class="mgr-nav-item">
+          <span class="material-icons">person</span> Profile
+        </a>
+      </nav>
+
+      <div class="mgr-sidebar-footer">
+        <div class="mgr-user-row">
+          <div class="mgr-avatar" id="userAvatar">--</div>
+          <div style="min-width:0;">
+            <p class="mgr-user-name" id="userName">Manager</p>
+            <p class="mgr-user-role">Manager</p>
+          </div>
+        </div>
+        <button class="mgr-logout-btn" id="logoutLink">
+          <span class="material-icons">logout</span> Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="mgr-main">
+      <div class="mgr-page-header">
+        <h1 id="greeting">Welcome back.</h1> <!-- replaced by JS with a time-of-day greeting once the user loads -->
+
+        <p>Here's your team overview.</p>
+      </div>
+
+      <div id="dashMessage" class="alert-box hidden"></div>
+
+      <div id="workplaceBanner" class="mgr-workplace-banner hidden">
+        <span class="material-icons">store</span>
+        <p>You haven't set up your workplace yet — your team can't join or see shifts until you do.</p>
+        <a href="manager-workplace-setup.html">Set up now</a>
+      </div>
+
+      <div id="inviteCodeCard" class="mgr-invite-card hidden">
+        <div class="mgr-invite-info">
+          <span class="material-icons">confirmation_number</span>
+          <div>
+            <p class="mgr-invite-label">Your workplace invite code</p>
+            <p class="mgr-invite-code" id="dashInviteCode">—</p>
+          </div>
+        </div>
+        <button type="button" id="dashCopyInviteBtn" class="btn-outline mgr-invite-copy-btn">
+          <span class="material-icons">content_copy</span> Copy
+        </button>
+      </div>
+
+      <div class="mgr-stats-grid">
+        <div class="mgr-stat-card mgr-stat-card--static">
+          <div class="mgr-stat-icon" style="background:#DDF2E7;">
+            <span class="material-icons" style="color:#166534;">group</span>
+          </div>
+          <p class="mgr-stat-value">—</p>
+          <p class="mgr-stat-label">Active Employees</p>
+        </div>
+        <div class="mgr-stat-card mgr-stat-card--static">
+          <div class="mgr-stat-icon" style="background:#DCEAF7;">
+            <span class="material-icons" style="color:#2B6CB0;">calendar_today</span>
+          </div>
+          <p class="mgr-stat-value">—</p>
+          <p class="mgr-stat-label">Open Shifts</p>
+        </div>
+        <a href="manager-shift-approvals.html" class="mgr-stat-card">
+          <div class="mgr-stat-icon" style="background:#FEF9C3;">
+            <span class="material-icons" style="color:#92400E;">assignment</span>
+          </div>
+          <p class="mgr-stat-value" id="statPendingApprovals">—</p>
+          <p class="mgr-stat-label">Pending Approvals</p>
+        </a>
+        <a href="manager-approvals.html" class="mgr-stat-card">
+          <div class="mgr-stat-icon" style="background:#FBE5DA;">
+            <span class="material-icons" style="color:#C0392B;">person_add</span>
+          </div>
+          <p class="mgr-stat-value" id="statPendingEmployees">—</p>
+          <p class="mgr-stat-label">Pending Employees</p>
+        </a>
+      </div>
+
+      <div class="mgr-section-heading">
+        <div class="mgr-section-bar"></div>
+        <h2>Requires Your Attention</h2>
+      </div>
+
+      <div class="mgr-panels">
+        <div>
+          <div class="mgr-panel-header">
+            <h3>New Employee Requests</h3>
+            <a href="manager-approvals.html">View all</a>
+          </div>
+          <div class="mgr-request-list" id="employeeRequestList">
+            <div class="mgr-empty-card"><p>Loading…</p></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="mgr-panel-header">
+            <h3>Shift Cover Requests</h3>
+            <a href="manager-shift-approvals.html">View all</a>
+          </div>
+          <div class="mgr-request-list" id="shiftClaimList">
+            <div class="mgr-empty-card"><p>Loading…</p></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/manager-dashboard.js"></script>
+</body>
+</html>

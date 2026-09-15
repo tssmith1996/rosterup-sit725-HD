@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RosterUp — Set Up Your Workplace</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <link rel="stylesheet" href="/style/main.css">
+  <link rel="stylesheet" href="/style/sign-in.css">
+  <link rel="stylesheet" href="/style/manager-workplace-setup.css">
+</head>
+<body>
+
+  <div class="auth-page">
+    <div class="auth-wrapper mws-wrapper">
+
+      <!-- Step 1: workplace details form -->
+      <div class="auth-card" id="setupView">
+        <div class="auth-logo">
+          <div class="auth-logo-box">R</div>
+          <span class="auth-logo-text">RosterUp</span>
+        </div>
+
+        <h2>Set up your workplace</h2>
+        <p class="auth-subtitle">Tell us about your business so we can generate your team's invite code.</p>
+
+        <form class="auth-fields" id="workplaceSetupForm">
+          <div class="field">
+            <label for="workplaceName">Business name</label>
+            <input type="text" id="workplaceName" placeholder="Corner Cafe" required>
+          </div>
+
+          <div class="field">
+            <label for="workplaceType">Business type</label>
+            <select id="workplaceType" required>
+              <option value="" disabled selected>Select a type</option>
+              <option value="Cafe">Cafe</option>
+              <option value="Restaurant">Restaurant</option>
+              <option value="Retail">Retail</option>
+              <option value="Bar">Bar</option>
+              <option value="Hotel">Hotel</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Warehouse">Warehouse</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="workplaceAddress">Street address</label>
+            <input type="text" id="workplaceAddress" placeholder="1 Main Street" required>
+          </div>
+
+          <div class="mws-row">
+            <div class="field">
+              <label for="workplaceTown">Town / Suburb</label>
+              <input type="text" id="workplaceTown" placeholder="Geelong" required>
+            </div>
+            <div class="field">
+              <label for="workplacePostcode">Postcode</label>
+              <input type="text" id="workplacePostcode" placeholder="3220" required>
+            </div>
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn-primary">Create Workplace</button>
+        </form>
+
+        <div id="messageBox" class="alert-box hidden"></div>
+      </div>
+
+      <!-- Step 2: invite code ready -->
+      <div class="auth-card hidden" id="readyView">
+        <div class="mws-success-icon">
+          <span class="material-icons">check_circle</span>
+        </div>
+
+        <h2 class="mws-center">Your workplace is ready!</h2>
+        <p class="auth-subtitle mws-center" id="readySubtitle">Share this invite code with your team so they can join.</p>
+
+        <div class="mws-invite-box">
+          <p class="mws-invite-label">Invite code</p>
+          <p class="mws-invite-code" id="inviteCodeValue">—</p>
+        </div>
+
+        <button type="button" id="copyBtn" class="btn-outline mws-copy-btn">
+          <span class="material-icons">content_copy</span> Copy Invite Code
+        </button>
+
+        <a href="manager-dashboard.html" class="btn-primary mws-dashboard-btn">Go to Dashboard</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/manager-workplace-setup.js"></script>
+</body>
+</html>

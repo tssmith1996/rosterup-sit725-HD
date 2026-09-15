@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RosterUp — Team Chat</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="/style/main.css">
+  <link rel="stylesheet" href="/style/employee-dashboard.css">
+  <link rel="stylesheet" href="/style/chat.css">
+</head>
+<body>
+
+  <div class="emp-shell">
+    <aside class="emp-sidebar">
+      <div class="emp-sidebar-header">
+        <div class="auth-logo">
+          <div class="auth-logo-box" style="width:32px;height:32px;font-size:0.875rem;">R</div>
+          <span class="auth-logo-text" style="font-size:1rem;">RosterUp</span>
+        </div>
+      </div>
+
+      <nav class="emp-nav">
+        <a href="employee-dashboard.html" class="emp-nav-item">
+          <span class="material-icons">dashboard</span> Dashboard
+        </a>
+        <a href="employee-open-shifts.html" class="emp-nav-item">
+          <span class="material-icons">list</span> Open Shifts
+        </a>
+        <a href="employee-my-shifts.html" class="emp-nav-item">
+          <span class="material-icons">calendar_today</span> My Shifts
+        </a>
+        <span class="emp-nav-item emp-nav-item--disabled" title="Not built yet">
+          <span class="material-icons">history</span> Shift History
+        </span>
+        <a href="employee-chat.html" class="emp-nav-item emp-nav-item--active">
+          <span class="material-icons">forum</span> Team Chat
+        </a>
+        <a href="employee-profile.html" class="emp-nav-item">
+          <span class="material-icons">person</span> Profile
+        </a>
+      </nav>
+
+      <div class="emp-sidebar-footer">
+        <div class="emp-user-row">
+          <div class="emp-avatar" id="userAvatar">--</div>
+          <div style="min-width:0;">
+            <p class="emp-user-name" id="userName">Employee</p>
+            <p class="emp-user-role" id="userRole">Employee</p>
+          </div>
+        </div>
+        <button class="emp-logout-btn" id="logoutLink">
+          <span class="material-icons">logout</span> Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="emp-main">
+      <div class="emp-page-header">
+        <h1>Team Chat</h1>
+        <p>Talk with everyone in your workplace, live.</p>
+      </div>
+
+      <div class="chat-layout">
+        <aside class="chat-contacts" id="chatContacts">
+          <p class="chat-contacts-header">Conversations</p>
+          <button type="button" class="chat-contact-item chat-contact-item--active" id="chatContactWorkplace" data-contact-id="workplace">
+            <span class="material-icons">groups</span>
+            <span class="chat-contact-name">Team Chat</span>
+          </button>
+          <p class="chat-contacts-divider">Direct messages</p>
+          <div id="chatContactsList" class="chat-contacts-list">
+            <p class="chat-contacts-empty" id="chatContactsEmpty">No colleagues here yet.</p>
+          </div>
+        </aside>
+
+        <div class="chat-wrap">
+          <div id="chatStatus" class="chat-status chat-status--connecting">
+            <span class="material-icons">sync</span> Connecting to chat…
+          </div>
+          <p id="chatActiveTitle" class="chat-active-title">
+            <span class="material-icons">groups</span> Team Chat
+          </p>
+          <div id="chatMessages" class="chat-messages">
+            <div id="chatEmptyState" class="chat-empty">
+              <span class="material-icons">forum</span>
+              <p>No messages yet — say hello to your team.</p>
+            </div>
+          </div>
+          <form id="chatForm" class="chat-input-row">
+            <input type="text" id="chatInput" placeholder="Message your team…" autocomplete="off" disabled required>
+            <button type="submit" id="chatSendBtn" class="btn-primary chat-send-btn" disabled>
+              <span class="material-icons">send</span> Send
+            </button>
+            <button type="button" id="chatClearBtn" class="chat-clear-btn" disabled title="Clear chat for everyone">
+              <span class="material-icons">delete_outline</span> Clear Chat
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RosterUp — Open Shifts</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="/style/main.css">
+  <link rel="stylesheet" href="/style/employee-dashboard.css">
+  <link rel="stylesheet" href="/style/employee-open-shifts.css">
+</head>
+<body>
+
+  <div class="emp-shell">
+    <aside class="emp-sidebar">
+      <div class="emp-sidebar-header">
+        <div class="auth-logo">
+          <div class="auth-logo-box" style="width:32px;height:32px;font-size:0.875rem;">R</div>
+          <span class="auth-logo-text" style="font-size:1rem;">RosterUp</span>
+        </div>
+      </div>
+
+      <nav class="emp-nav">
+        <a href="employee-dashboard.html" class="emp-nav-item">
+          <span class="material-icons">dashboard</span> Dashboard
+        </a>
+        <a href="employee-open-shifts.html" class="emp-nav-item emp-nav-item--active">
+          <span class="material-icons">list</span> Open Shifts
+        </a>
+        <a href="employee-my-shifts.html" class="emp-nav-item">
+          <span class="material-icons">calendar_today</span> My Shifts
+        </a>
+        <span class="emp-nav-item emp-nav-item--disabled" title="Not built yet">
+          <span class="material-icons">history</span> Shift History
+        </span>
+        <a href="employee-chat.html" class="emp-nav-item">
+          <span class="material-icons">forum</span> Team Chat
+        </a>
+        <a href="employee-profile.html" class="emp-nav-item">
+          <span class="material-icons">person</span> Profile
+        </a>
+      </nav>
+
+      <div class="emp-sidebar-footer">
+        <div class="emp-user-row">
+          <div class="emp-avatar" id="userAvatar">--</div>
+          <div style="min-width:0;">
+            <p class="emp-user-name" id="userName">Employee</p>
+            <p class="emp-user-role" id="userRole">Employee</p>
+          </div>
+        </div>
+        <button class="emp-logout-btn" id="logoutLink">
+          <span class="material-icons">logout</span> Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="emp-main">
+      <div class="emp-page-header">
+        <h1>Open Shifts</h1>
+        <p id="openShiftsSubtitle">Loading shifts…</p>
+      </div>
+
+      <div id="shiftList" class="eos-list">
+        <div class="emp-empty-card"><p>Loading…</p></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/employee-open-shifts.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+/* ==========================================================================
+   RosterUp — main.css
+   Global design tokens and base styles, extracted from the Figma prototype.
+   Page-specific styles live in separate files in this same folder
+   (for example style/dashboard.css, style/login.css).
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+:root {
+  /* Colours */
+  --color-background: #FAF9F7;
+  --color-foreground: #2E3440;
+  --color-card: #FFFFFF;
+  --color-primary: #8D7AB8;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #E8E2F4;
+  --color-secondary-foreground: #8D7AB8;
+  --color-muted: #F3F1F8;
+  --color-muted-foreground: #7B7A8E;
+  --color-accent: #E8E2F4;
+  --color-destructive: #E25656;
+  --color-border: rgba(141, 122, 184, 0.15);
+  --color-input-background: #F8F7FC;
+
+  /* Typography */
+  --font-family: 'DM Sans', sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+
+  /* Shape */
+  --radius: 0.75rem;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+h1, h2, h3, h4 {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-foreground);
+}
+
+/* --------------------------------------------------------------------------
+   Materialize overrides — apply the RosterUp palette to Materialize's
+   default components instead of its built-in teal/blue theme.
+   -------------------------------------------------------------------------- */
+
+.btn, .btn-large, .btn-small {
+  background-color: var(--color-primary);
+  border-radius: var(--radius);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+}
+
+.btn:hover, .btn-large:hover, .btn-small:hover {
+  background-color: var(--color-secondary-foreground);
+}
+
+.card {
+  background-color: var(--color-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+.input-field input, .input-field textarea {
+  background-color: var(--color-input-background);
+  border-radius: var(--radius);
+}
+
+nav {
+  background-color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Shared logo mark — "R" box + "RosterUp" text. Used on the auth pages and
+   the app shells (manager/employee sidebars). Lives here (not in a single
+   page's CSS file) so every page that reuses it gets it for free instead of
+   silently rendering unstyled markup.
+   -------------------------------------------------------------------------- */
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.auth-logo-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.75rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.auth-logo-text {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-foreground);
+}
+
+/* --------------------------------------------------------------------------
+   Shared buttons — used across multiple pages (Welcome, Sign In, etc.)
+   -------------------------------------------------------------------------- */
+
+.btn-primary, .btn-outline {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 150ms;
+  border: none;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.btn-primary:hover { background: #7B68A6; }
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+.btn-outline:hover { background: var(--color-muted); }
+
+.btn-secondary {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  border: none;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  transition: background-color 150ms;
+  margin-top: auto;
+}
+.btn-secondary:hover {
+  background: #DDD7EF;
+}

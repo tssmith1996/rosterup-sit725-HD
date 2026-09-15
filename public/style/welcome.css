@@ -1,0 +1,88 @@
+/* ==========================================================================
+   welcome.css — styles for the Welcome / landing screen only.
+   ========================================================================== */
+
+.welcome-page {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background circles */
+.welcome-circle {
+  position: absolute;
+  border-radius: 50%;
+}
+.welcome-circle--1 { top: -7rem; right: -7rem; width: 420px; height: 420px; background: #E8E2F4; opacity: 0.7; }
+.welcome-circle--2 { bottom: -5rem; left: -5rem; width: 320px; height: 320px; background: #DCEAF7; opacity: 0.6; }
+.welcome-circle--3 { top: 50%; left: 2.5rem; width: 176px; height: 176px; background: #DDF2E7; opacity: 0.4; }
+.welcome-circle--4 { bottom: 33%; right: 2.5rem; width: 112px; height: 112px; background: #FBE5DA; opacity: 0.5; }
+
+.welcome-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 24rem;
+}
+
+.welcome-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 1.5rem;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+.welcome-logo span {
+  color: #fff;
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.welcome-title {
+  text-align: center;
+}
+.welcome-title h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin: 0;
+}
+.welcome-title p {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 0.5rem;
+}
+
+.welcome-description {
+  text-align: center;
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.625;
+}
+
+.welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.welcome-footer {
+  font-size: 0.75rem;
+  color: #9CA3AF;
+  text-align: center;
+}

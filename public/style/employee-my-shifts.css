@@ -1,0 +1,73 @@
+/* ==========================================================================
+   employee-my-shifts.css — "My Shifts" page (post-shift form + claimed
+   shifts list). Sidebar shell reuses employee-dashboard.css, form field
+   styling reuses sign-in.css's .field/.auth-fields, and the claimed-shift
+   cards reuse employee-open-shifts.css's .eos-card/.eos-list so the same
+   shift card doesn't need to be redesigned twice.
+   ========================================================================== */
+
+.msh-panel {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 40rem;
+  margin-bottom: 2rem;
+}
+
+.msh-form {
+  margin-top: 0.25rem;
+}
+
+.msh-row {
+  display: flex;
+  gap: 1rem;
+}
+.msh-row .field {
+  flex: 1;
+  min-width: 0;
+}
+
+.field textarea {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid rgba(141, 122, 184, 0.25);
+  background: #fff;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-family: var(--font-family);
+  color: var(--color-foreground);
+  box-sizing: border-box;
+  resize: vertical;
+}
+.field textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(141, 122, 184, 0.25);
+}
+
+.msh-submit-btn {
+  width: auto;
+  padding: 0.625rem 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.msh-withdraw-btn {
+  background: transparent;
+  border: 1px solid var(--color-destructive);
+  color: var(--color-destructive);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease;
+}
+.msh-withdraw-btn:hover:not(:disabled) {
+  background: rgba(226, 86, 86, 0.08);
+}
+.msh-withdraw-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

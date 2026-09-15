@@ -1,0 +1,33 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: rosterup-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - rosterup-mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+  rosterupsit725:
+    image: rosterupsit725
+    container_name: rosterupsit725-app
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    env_file:
+      - .env
+    environment:
+      MONGO_URI: mongodb://mongo:27017/RUDatabase
+    ports:
+      - 3000:3000
+    depends_on:
+      mongo:
+        condition: service_healthy
+volumes:
+  rosterup-mongo-data:

@@ -1,0 +1,311 @@
+/* ==========================================================================
+   employee-dashboard.css — sidebar shell + dashboard content, matching the
+   Figma "Employee Dashboard" screen (EmployeeLayout + EmpDashboard).
+   Same structural pattern as manager-dashboard.css, kept as its own file
+   since this project styles each page separately.
+   ========================================================================== */
+
+.emp-shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ---- Sidebar ---- */
+
+.emp-sidebar {
+  width: 15rem;
+  flex-shrink: 0;
+  background: var(--color-card);
+  border-right: 1px solid rgba(141, 122, 184, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.emp-sidebar-header {
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid rgba(141, 122, 184, 0.08);
+}
+
+.emp-nav {
+  /* main.css has a global `nav { background-color: var(--color-primary); }`
+     rule (used for the old top navbar on other pages) — override it
+     explicitly here, same fix as manager-dashboard.css. */
+  background: var(--color-card);
+  flex: 1;
+  padding: 0.75rem;
+  overflow-y: auto;
+}
+
+.emp-nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  margin-bottom: 2px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6B7280;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 150ms, color 150ms;
+}
+.emp-nav-item .material-icons {
+  font-size: 19px;
+  color: #9CA3AF;
+}
+.emp-nav-item:hover:not(.emp-nav-item--disabled) {
+  background: var(--color-muted);
+  color: var(--color-foreground);
+}
+.emp-nav-item--active {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+}
+.emp-nav-item--active .material-icons {
+  color: var(--color-primary);
+}
+.emp-nav-item--disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.emp-sidebar-footer {
+  padding: 0.75rem;
+  border-top: 1px solid rgba(141, 122, 184, 0.08);
+}
+
+.emp-user-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.emp-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.emp-user-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.emp-user-role {
+  font-size: 0.75rem;
+  color: #9CA3AF;
+}
+
+.emp-logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #9CA3AF;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 150ms;
+}
+.emp-logout-btn:hover {
+  color: var(--color-destructive);
+  background: #FDF2F2;
+}
+.emp-logout-btn .material-icons { font-size: 17px; }
+
+/* ---- Main content ---- */
+
+.emp-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.emp-page-header {
+  margin-bottom: 2rem;
+}
+.emp-page-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin: 0;
+}
+.emp-page-header p {
+  color: #6B7280;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.emp-status-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #FEF9C3;
+  border: 1px solid rgba(146, 64, 14, 0.15);
+  border-radius: var(--radius);
+  padding: 0.875rem 1.125rem;
+  margin-bottom: 1.5rem;
+}
+.emp-status-banner .material-icons {
+  color: #92400E;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.emp-status-banner p {
+  font-size: 0.8125rem;
+  color: #78350F;
+  margin: 0;
+}
+
+.emp-status-banner--success {
+  background: var(--color-secondary);
+  border-color: var(--color-border);
+}
+.emp-status-banner--success .material-icons {
+  color: var(--color-primary);
+}
+.emp-status-banner--success p {
+  color: var(--color-primary);
+}
+
+.emp-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.emp-stat-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  display: block;
+}
+.emp-stat-card--link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.emp-stat-card--link:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.emp-stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+.emp-stat-icon .material-icons { font-size: 19px; }
+
+.emp-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+}
+.emp-stat-label {
+  font-size: 0.75rem;
+  color: #6B7280;
+  margin-top: 0.25rem;
+}
+
+.emp-panels {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 1.5rem;
+}
+
+.emp-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.emp-panel-header h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin: 0;
+}
+.emp-panel-header a {
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+.emp-panel-header a:hover { text-decoration: underline; }
+
+.emp-shift-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.emp-empty-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+.emp-empty-card p {
+  font-size: 0.75rem;
+  color: #9CA3AF;
+  margin: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.alert-box {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+.alert-success {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+.alert-error {
+  background-color: #FDF2F2;
+  color: var(--color-destructive);
+  border: 1px solid rgba(226, 86, 86, 0.15);
+}
+
+@media (max-width: 900px) {
+  .emp-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .emp-panels { grid-template-columns: 1fr; }
+}

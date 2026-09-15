@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RosterUp — My Shifts</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="/style/main.css">
+  <link rel="stylesheet" href="/style/sign-in.css">
+  <link rel="stylesheet" href="/style/employee-dashboard.css">
+  <link rel="stylesheet" href="/style/employee-open-shifts.css">
+  <link rel="stylesheet" href="/style/employee-my-shifts.css">
+</head>
+<body>
+
+  <div class="emp-shell">
+    <aside class="emp-sidebar">
+      <div class="emp-sidebar-header">
+        <div class="auth-logo">
+          <div class="auth-logo-box" style="width:32px;height:32px;font-size:0.875rem;">R</div>
+          <span class="auth-logo-text" style="font-size:1rem;">RosterUp</span>
+        </div>
+      </div>
+
+      <nav class="emp-nav">
+        <a href="employee-dashboard.html" class="emp-nav-item">
+          <span class="material-icons">dashboard</span> Dashboard
+        </a>
+        <a href="employee-open-shifts.html" class="emp-nav-item">
+          <span class="material-icons">list</span> Open Shifts
+        </a>
+        <a href="employee-my-shifts.html" class="emp-nav-item emp-nav-item--active">
+          <span class="material-icons">calendar_today</span> My Shifts
+        </a>
+        <span class="emp-nav-item emp-nav-item--disabled" title="Not built yet">
+          <span class="material-icons">history</span> Shift History
+        </span>
+        <a href="employee-chat.html" class="emp-nav-item">
+          <span class="material-icons">forum</span> Team Chat
+        </a>
+        <a href="employee-profile.html" class="emp-nav-item">
+          <span class="material-icons">person</span> Profile
+        </a>
+      </nav>
+
+      <div class="emp-sidebar-footer">
+        <div class="emp-user-row">
+          <div class="emp-avatar" id="userAvatar">--</div>
+          <div style="min-width:0;">
+            <p class="emp-user-name" id="userName">Employee</p>
+            <p class="emp-user-role" id="userRole">Employee</p>
+          </div>
+        </div>
+        <button class="emp-logout-btn" id="logoutLink">
+          <span class="material-icons">logout</span> Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="emp-main">
+      <div class="emp-page-header">
+        <h1>My Shifts</h1>
+        <p>Post one of your shifts for cover, or withdraw a shift you've claimed.</p>
+      </div>
+
+      <div class="msh-panel">
+        <div class="emp-panel-header">
+          <h2>Post a Shift for Cover</h2>
+        </div>
+
+        <form class="auth-fields msh-form" id="postShiftForm">
+          <div class="msh-row">
+            <div class="field">
+              <label for="shiftDate">Date</label>
+              <input type="date" id="shiftDate" required>
+            </div>
+            <div class="field">
+              <label for="shiftStart">Start time</label>
+              <input type="time" id="shiftStart" required>
+            </div>
+            <div class="field">
+              <label for="shiftEnd">End time</label>
+              <input type="time" id="shiftEnd" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="shiftRole">Role</label>
+            <input type="text" id="shiftRole" placeholder="Barista" maxlength="100" required>
+          </div>
+
+          <div class="field">
+            <label for="shiftNote">Note (optional)</label>
+            <textarea id="shiftNote" rows="2" maxlength="500" placeholder="Anything a colleague picking this up should know"></textarea>
+          </div>
+
+          <button type="submit" id="postShiftBtn" class="btn-primary msh-submit-btn">Post Shift</button>
+        </form>
+
+        <div id="postShiftMessage" class="alert-box hidden"></div>
+      </div>
+
+      <div class="msh-panel">
+        <div class="emp-panel-header">
+          <h2>My Claimed Shifts</h2>
+        </div>
+
+        <div id="claimedShiftsList" class="eos-list">
+          <div class="emp-empty-card"><p>Loading…</p></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/employee-my-shifts.js"></script>
+</body>
+</html>

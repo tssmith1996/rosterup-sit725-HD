@@ -1,0 +1,38 @@
+/* ==========================================================================
+   manager-approvals.css — Employees (pending join requests) page.
+   Sidebar shell + .mgr-request-list / .mgr-request-card / .mgr-btn-approve /
+   .mgr-btn-reject all reuse manager-dashboard.css — this file only adds the
+   width constraint for the full-page list (those classes were originally
+   sized for the narrower dashboard preview panel).
+
+   (This file used to style a Materialize-based table layout, but the page
+   never actually loaded Materialize's stylesheet — same broken-external-link
+   bug as employee-join.html had. Rewritten to use the same sidebar-shell +
+   request-card pattern as the rest of the manager pages instead.)
+   ========================================================================== */
+
+.mar-wrap {
+  max-width: 40rem;
+}
+
+.alert-box {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+.alert-success {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+.alert-error {
+  background-color: #FDF2F2;
+  color: var(--color-destructive);
+  border: 1px solid rgba(226, 86, 86, 0.15);
+}
+
+.hidden {
+  display: none !important;
+}
