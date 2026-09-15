@@ -8,10 +8,6 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Open Question - AWS or GCP to host?
-mongoose.connect(process.env.MONGO_URI);
-mongoose.connection.on('connected', () => { console.log('Connected to MongoDB!'); });
-
 // Import Routes
 const shiftRoutes = require('./routes/shifts.routes');
 const userRoutes = require('./routes/users.routes');
@@ -32,6 +28,14 @@ app.use('/api/workplaces', workplaceRoutes);
 app.use('/api/shifts', shiftRoutes);
 app.use('/api/manager', managerRoutes);
 
+app.get('/api/student', async (req, res) => { 
+    const studentData = {
+        "name": "Tim Smith",
+        "studentId": "223512028"
+    }
+    res.json({ statusCode: 200, data: studentData, message: "Success" }); 
+});
+
 // Socket.io needs to attach to the underlying HTTP server (not the Express
 // app directly) so it can hijack the same port for the WebSocket upgrade
 // handshake — this is why app.listen() below became server.listen().
@@ -39,6 +43,14 @@ const server = http.createServer(app);
 const io = new Server(server);
 initChatSocket(io);
 
-server.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log('Connected to MongoDB!');
+        server.listen(port, () => {
+            console.log(`Server is running on http://localhost:${port}`);
+        });
+    })
+    .catch((error) => {
+        console.error('Unable to connect to MongoDB:', error.message);
+        process.exit(1);
+    });
